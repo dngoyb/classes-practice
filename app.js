@@ -36,3 +36,29 @@ console.log(c.perimeter);
 console.log(r.isBiggerThan(c));
 console.log(c);
 */
+
+/** Exercise 2 */
+
+class Book {
+	#page = 1;
+	constructor(title, pages) {
+		this.title = title;
+		this.pages = pages;
+	}
+	get page() {
+		return this.#page;
+	}
+	nextPage() {
+		return this.#page++;
+	}
+	closeBook() {
+		return (this.#page = 1);
+	}
+}
+
+const b = new Book('Book1', 125);
+console.log(b.page);
+b.nextPage();
+console.log(b.page);
+b.closeBook();
+console.log(b.page);
