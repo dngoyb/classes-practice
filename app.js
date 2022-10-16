@@ -56,9 +56,48 @@ class Book {
 	}
 }
 
+class Library {
+	#books = [];
+	addBook(book) {
+		return this.#books.push(book);
+	}
+	addBooks(books) {
+		return books.forEach((book) => {
+			return this.#books.push(book);
+		});
+	}
+	removeBook(title) {
+		return this.#books.filter((b) => {
+			return b.title === title;
+		});
+	}
+	findBookThatStartWith(letter) {
+		return this.#books.filter((book) => {
+			return book.title[0].toLowerCase() === letter.toLowerCase();
+		});
+	}
+}
+
 const b = new Book('Book1', 125);
-console.log(b.page);
-b.nextPage();
-console.log(b.page);
-b.closeBook();
-console.log(b.page);
+// console.log(b.page);
+// b.nextPage();
+// console.log(b.page);
+// b.closeBook();
+// console.log(b.page);
+
+const l = new Library();
+l.addBook(new Book('Card', 12));
+
+l.addBooks([
+	new Book('Book 1', 25),
+	new Book('Book 1', 35),
+	new Book('Book 5', 54),
+	new Book('Book 9', 54),
+	new Book('Book 1', 54),
+	new Book('look 1', 54),
+]);
+
+// console.log(l.removeBook('Book 1'));
+
+console.log(l.findBookThatStartWith('c'));
+console.log(l);
